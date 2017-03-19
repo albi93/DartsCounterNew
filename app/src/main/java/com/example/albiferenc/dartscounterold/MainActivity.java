@@ -129,6 +129,30 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        binding.Player1Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                // TODO player 1 can not be disabled
+            }
+        });
+
+        binding.Player2Button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                if(player2.isDisabled()) {
+                    player2.setDisabled(false);
+                    binding.Player2Button.setAlpha(1.0f);
+                } else {
+                    player2.setDisabled(true);
+                    player2.setIsActive(false);
+                    player1.setIsActive(true);
+                    binding.Player1Button.setTypeface(null, Typeface.BOLD);
+                    binding.Player2Button.setTypeface(null, Typeface.NORMAL);
+                    binding.Player2Button.setAlpha(0.2f);
+                }
+            }
+        });
+
         binding.buttonSubmit.setOnClickListener(new View.OnClickListener() {
             int currentThrow = 0;
             @Override
@@ -192,6 +216,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void resetGame(int startScore) {
+        boolean tempDisabled = player2.isDisabled();
         player1 = new Player(startScore);
         player2 = new Player(startScore);
         player1.setIsActive(false);
@@ -199,8 +224,10 @@ public class MainActivity extends AppCompatActivity {
         refreshView();
         player1.setIsActive(true);
         player2.setIsActive(false);
+        player2.setDisabled(tempDisabled);
         round = 1;
         binding.buttonSubmit.setEnabled(true);
+
         refreshView();
     }
 
@@ -212,17 +239,21 @@ public class MainActivity extends AppCompatActivity {
         }
     }
     public void setActivePlayer() {
-        if(player1.isActive()) {
-            player1.setIsActive(false);
-            player2.setIsActive(true);
-            binding.Player2TextView.setTypeface(null, Typeface.BOLD);
-            binding.Player1TextView.setTypeface(null, Typeface.NORMAL);
+        if(!player2.isDisabled()) {
+            if (player1.isActive()) {
+                player1.setIsActive(false);
+                player2.setIsActive(true);
+                binding.Player2Button.setTypeface(null, Typeface.BOLD);
+                binding.Player1Button.setTypeface(null, Typeface.NORMAL);
+            } else {
+                player2.setIsActive(false);
+                player1.setIsActive(true);
+                binding.Player1Button.setTypeface(null, Typeface.BOLD);
+                binding.Player2Button.setTypeface(null, Typeface.NORMAL);
+                round++;    // Increasing round counter after player 2 finished throwing
+            }
         } else {
-            player2.setIsActive(false);
-            player1.setIsActive(true);
-            binding.Player1TextView.setTypeface(null, Typeface.BOLD);
-            binding.Player2TextView.setTypeface(null, Typeface.NORMAL);
-            round++;    // Increasing round counter after player 2 finished throwing
+            round++;    // Increasing round counter after single player finished throwing
         }
     }
 }

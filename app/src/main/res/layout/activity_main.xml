@@ -43,8 +43,9 @@
                 android:text="@string/fiveZeroOne"
                 android:textSize="20sp" />
 
-            <TextView
-                android:id="@+id/Player1TextView"
+            <Button
+                android:id="@+id/Player1Button"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/button301"
@@ -52,39 +53,40 @@
                 android:layout_alignRight="@+id/buttonOne"
                 android:layout_alignEnd="@+id/buttonOne"
                 android:text="@string/player1"
-                android:textSize="30sp" />
-            <TextView
-                android:id="@+id/Player2TextView"
+                android:textSize="20sp" />
+            <Button
+                android:id="@+id/Player2Button"
+                style="@style/Widget.AppCompat.Button.Borderless"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_below="@+id/button301"
                 android:layout_marginBottom="15dp"
-                android:layout_toRightOf="@+id/Player1TextView"
-                android:layout_toEndOf="@+id/Player1TextView"
+                android:layout_toRightOf="@+id/Player1Button"
+                android:layout_toEndOf="@+id/Player1Button"
                 android:layout_alignLeft="@+id/buttonThree"
                 android:layout_alignStart="@+id/buttonThree"
                 android:text="@string/player2"
-                android:textSize="30sp" />
+                android:textSize="20sp" />
 
             <TextView
                 android:id="@+id/Score1TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_below="@id/Player1TextView"
+                android:layout_below="@id/Player1Button"
                 android:layout_alignRight="@+id/buttonOne"
                 android:layout_alignEnd="@+id/buttonOne"
-                android:text="501"
+                android:text="@string/_501"
                 android:textSize="30sp" />
             <TextView
                 android:id="@+id/Score2TextView"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_marginBottom="5dp"
-                android:layout_below="@id/Player2TextView"
+                android:layout_below="@id/Player2Button"
                 android:layout_alignLeft="@+id/buttonThree"
                 android:layout_alignStart="@+id/buttonThree"
-                android:text="501"
+                android:text="@string/_501"
                 android:textSize="30sp" />
 
             <EditText
@@ -266,7 +268,7 @@
                 android:layout_toLeftOf="@+id/EmptyTextView"
                 android:layout_toStartOf="@+id/EmptyTextView"
                 android:layout_below="@id/Average1TextView"
-                android:text="Scores"
+                android:text="@string/scores"
                 android:textSize="20sp" />
             <TextView
                 android:id="@+id/EmptyTextView"
@@ -287,7 +289,7 @@
                 android:layout_alignStart="@+id/buttonThree"
                 android:layout_toRightOf="@+id/EmptyTextView"
                 android:layout_toEndOf="@+id/EmptyTextView"
-                android:text="Scores"
+                android:text="@string/scores"
                 android:textSize="20sp" />
 
         </RelativeLayout>

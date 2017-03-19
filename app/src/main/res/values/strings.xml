@@ -20,4 +20,6 @@
     <string name="fiveZeroOne">501</string>
     <string name="threeZeroOne">301</string>
     <string name="oneZeroOne">101</string>
+    <string name="_501">501</string>
+    <string name="scores">Scores</string>
 </resources>

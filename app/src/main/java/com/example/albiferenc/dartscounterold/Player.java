@@ -7,8 +7,8 @@ import java.util.List;
 /**
  * Created by Albi Ferenc on 2017.02.03..
  */
-public class Player {
-    public Player(int score){
+class Player {
+    Player(int score){
         this.score = score;
         this.average = 0;
         scores = new ArrayList<Integer>();
@@ -19,8 +19,9 @@ public class Player {
     private List<Integer> checkOuts;  // List of possible checkouts
     private double average;    // Average
     private boolean isActive;   // Boolean to decide which player is active
+    private boolean isDisabled;
 
-    public double calculateAverage(int round) {
+    double calculateAverage(int round) {
         int tmp = 0;
         for (int value : this.scores) {
             tmp += value;
@@ -29,7 +30,7 @@ public class Player {
         return this.average;
     }
 
-    public int calculateScore(int currentThrow) {
+    int calculateScore(int currentThrow) {
         if(this.score - currentThrow < 0) {
             return Constants.BUST;
         } else if(this.score - currentThrow == 0) {
@@ -39,12 +40,12 @@ public class Player {
         }
     }
 
-    public void substractScore(int currentThrow) {
+    void substractScore(int currentThrow) {
         this.score -= currentThrow;
     }
 
 // Getter and setter methods
-    public int getScore() {
+int getScore() {
         return score;
     }
 
@@ -52,19 +53,19 @@ public class Player {
         this.score = score;
     }
 
-    public String getStrScore() {
+    String getStrScore() {
         return String.valueOf(getScore());
     }
 
-    public List getScores() {
+    List getScores() {
         return scores;
     }
 
-    public void setScores(List scores) {
+    void setScores(List scores) {
         this.scores = scores;
     }
 
-    public String getStrScores() {
+    String getStrScores() {
         StringBuilder stringBuilder = new StringBuilder();
         int cntr = 0;   // Temporary counter for deciding if we need to add "," after the elements
         if(null != this.scores && !this.scores.isEmpty()) {
@@ -80,27 +81,35 @@ public class Player {
         return stringBuilder.toString();
     }
 
-    public List getCheckOuts() {
+    List getCheckOuts() {
         return checkOuts;
     }
 
-    public void setCheckOuts(List checkOuts) {
+    void setCheckOuts(List checkOuts) {
         this.checkOuts = checkOuts;
     }
 
-    public double getAverage() {
+    double getAverage() {
         return average;
     }
 
-    public void setAverage(double average) {
+    void setAverage(double average) {
         this.average = average;
     }
 
-    public boolean isActive() {
+    boolean isActive() {
         return isActive;
     }
 
-    public void setIsActive(boolean isActive) {
+    void setIsActive(boolean isActive) {
         this.isActive = isActive;
+    }
+
+    boolean isDisabled() {
+        return isDisabled;
+    }
+
+    void setDisabled(boolean disabled) {
+        isDisabled = disabled;
     }
 }
