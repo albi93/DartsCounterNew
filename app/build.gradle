@@ -1,9 +1,16 @@
 apply plugin: 'com.android.application'
 
 android {
+    signingConfigs {
+        mySigningConfig_1 {
+            keyAlias 'myAndroidKey_1'
+            keyPassword 'ChewBacca0393'
+            storeFile file('C:/Users/Albi Ferenc/myAndroidKeyStore.jks')
+            storePassword 'ChewBacca0393'
+        }
+    }
     compileSdkVersion 25
     buildToolsVersion '25.0.0'
-
     defaultConfig {
         applicationId "com.example.albiferenc.dartscounterold"
         minSdkVersion 15
@@ -15,13 +22,14 @@ android {
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+            signingConfig signingConfigs.mySigningConfig_1
         }
     }
     dataBinding.enabled = true
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     testCompile 'junit:junit:4.12'
     compile 'com.android.support:appcompat-v7:25.3.0'
 }

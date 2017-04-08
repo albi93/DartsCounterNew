@@ -291,6 +291,30 @@
                 android:layout_toEndOf="@+id/EmptyTextView"
                 android:text="@string/scores"
                 android:textSize="20sp" />
+            <TextView
+                android:id="@+id/CheckOut1TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_alignRight="@+id/buttonOne"
+                android:layout_alignEnd="@+id/buttonOne"
+                android:layout_toLeftOf="@+id/EmptyTextView"
+                android:layout_toStartOf="@+id/EmptyTextView"
+                android:layout_below="@id/Scores1TextView"
+                android:text="@string/checkOut"
+                android:textSize="20sp" />
+            <TextView
+                android:id="@+id/CheckOut2TextView"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginBottom="15dp"
+                android:layout_below="@id/Scores2TextView"
+                android:layout_alignLeft="@+id/buttonThree"
+                android:layout_alignStart="@+id/buttonThree"
+                android:layout_toRightOf="@+id/EmptyTextView"
+                android:layout_toEndOf="@+id/EmptyTextView"
+                android:text="@string/checkOut"
+                android:textSize="20sp" />
 
         </RelativeLayout>
     </ScrollView>

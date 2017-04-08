@@ -189,6 +189,7 @@ public class MainActivity extends AppCompatActivity {
     public void calculateStatistics(int round, int currentThrow) {
         getActivePlayer().getScores().add(currentThrow);
         getActivePlayer().calculateAverage(round);
+        getActivePlayer().calculateCheckOut();
     }
     public void refreshView() {
         if(player1.isActive()) {
@@ -199,6 +200,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.Score1TextView.setText(player1.getStrScore());
                 binding.Average1TextView.setText((Constants.AVG + decimalFormat.format(player1.getAverage())));
                 binding.Scores1TextView.setText(player1.getStrScores());
+                binding.CheckOut1TextView.setText(Constants.CHECKOUT + System.getProperty("line.separator") + player1.getStrCheckOuts());
                 // TODO tobbi mezot frissiteni: avg, previous, stb.
             }
         } else {
@@ -209,6 +211,7 @@ public class MainActivity extends AppCompatActivity {
                 binding.Score2TextView.setText(player2.getStrScore());
                 binding.Average2TextView.setText((Constants.AVG + decimalFormat.format(player2.getAverage())));
                 binding.Scores2TextView.setText(player2.getStrScores());
+                binding.CheckOut2TextView.setText(Constants.CHECKOUT + System.getProperty("line.separator") + player2.getStrCheckOuts());
             }
             // TODO tobbi mezot frissiteni: avg, previous, stb.
         }
@@ -227,16 +230,16 @@ public class MainActivity extends AppCompatActivity {
         player2.setDisabled(tempDisabled);
         round = 1;
         binding.buttonSubmit.setEnabled(true);
-
         refreshView();
     }
 
     public Player getActivePlayer() {
-        if(player1.isActive()) {
-            return player1;
-        } else {
-            return player2;
-        }
+        return player1.isActive() ? player1 : player2;
+//        if(player1.isActive()) {
+//            return player1;
+//        } else {
+//            return player2;
+//        }
     }
     public void setActivePlayer() {
         if(!player2.isDisabled()) {

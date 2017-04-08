@@ -1,5 +1,5 @@
 <resources>
-    <string name="app_name">DartsCounterOld</string>
+    <string name="app_name">Darts Counter</string>
     <string name="round">Round</string>
     <string name="average">Average</string>
     <string name="submit">Submit</string>
@@ -22,4 +22,5 @@
     <string name="oneZeroOne">101</string>
     <string name="_501">501</string>
     <string name="scores">Scores</string>
+    <string name="checkOut">Checkout</string>
 </resources>

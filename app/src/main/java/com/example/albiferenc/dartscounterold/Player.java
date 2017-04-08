@@ -12,14 +12,17 @@ class Player {
         this.score = score;
         this.average = 0;
         scores = new ArrayList<Integer>();
+        this.checkOut = new CheckOut();
+        this.checkOuts = new ArrayList<String>();
     }
 
     private int score;      // Score at the moment
     private List<Integer> scores;    // Previous throws
-    private List<Integer> checkOuts;  // List of possible checkouts
+    private ArrayList<String> checkOuts;  // List of possible checkouts
     private double average;    // Average
     private boolean isActive;   // Boolean to decide which player is active
     private boolean isDisabled;
+    private CheckOut checkOut;
 
     double calculateAverage(int round) {
         int tmp = 0;
@@ -40,12 +43,19 @@ class Player {
         }
     }
 
+    ArrayList<String> calculateCheckOut() {
+        checkOuts.clear();
+        checkOuts.addAll(checkOut.calculateCheckOut(this.score));
+        return checkOuts;
+    }
+
     void substractScore(int currentThrow) {
-        this.score -= currentThrow;
+        if(currentThrow <= 180 && ((this.score - currentThrow) != 1))
+            this.score -= currentThrow;
     }
 
 // Getter and setter methods
-int getScore() {
+    int getScore() {
         return score;
     }
 
@@ -73,7 +83,7 @@ int getScore() {
                 String temp = String.valueOf(val);
                 stringBuilder.append(temp);
                 if(cntr != this.scores.size()-1) {
-                    stringBuilder.append(" , ");
+                    stringBuilder.append(Constants.SEPARATOR);
                 }
                 cntr++;
             }
@@ -85,8 +95,19 @@ int getScore() {
         return checkOuts;
     }
 
-    void setCheckOuts(List checkOuts) {
+    void setCheckOuts(ArrayList checkOuts) {
         this.checkOuts = checkOuts;
+    }
+
+    String getStrCheckOuts() {
+        StringBuilder builder = new StringBuilder();
+        for(String tempString: checkOuts) {
+            builder.append(tempString);
+            if(checkOuts.indexOf(tempString) != checkOuts.size()-1 ) {
+                builder.append(Constants.SEPARATOR);
+            }
+        }
+        return builder.toString();
     }
 
     double getAverage() {
